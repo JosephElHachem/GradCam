@@ -18,9 +18,11 @@ imageNet_labels: True if labels used are from ImageNet
 labels_path: path to .txt file containing a dictonary of your labels in the following format
 
 labels.txt
+
 ----------------------------
 {0: 'cat',
  1: 'dog',
  2: 'person'}
  ----------------------------
+ 
  show: add --show in command to show plots of GradCam. By default, plots will not be shown
