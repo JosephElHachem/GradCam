@@ -2,6 +2,8 @@
 This git is a user friendly implementation of GradCam to better understand the behaviour of any CNN-based computer vision network.
 Paper at: https://arxiv.org/pdf/1610.02391
 
+![alt_text](https://upload-images.jianshu.io/upload_images/415974-0147c44dcfb8cc1c.jpg)
+
 The input needed the pretrained network in question, and one of its CNN layers. It is prefered to pass the last layer since it contains highest level of information.
 The output is a superposition of the image and a heatmap indicating where the CNN layer is looking.
 
