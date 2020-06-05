@@ -4,10 +4,12 @@ Paper at: https://arxiv.org/pdf/1610.02391
 
 ![alt_text](https://upload-images.jianshu.io/upload_images/415974-0147c44dcfb8cc1c.jpg)
 
-The input needed the pretrained network in question, and one of its CNN layers. It is prefered to pass the last layer since it contains highest level of information.
+
+The input needed the pretrained network in question, one of its CNN layers, and at least one image to be used for inference. It is prefered to pass the last layer since it contains highest level of information.
 The output is a superposition of the image and a heatmap indicating where the CNN layer is looking.
 
-Example to run: 
+
+Example to run:
 
 `python main.py --model_path vgg16 --images_path data --labels_path imagenet1000_labels.txt --n_images 3 --show`
 
