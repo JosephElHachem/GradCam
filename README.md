@@ -5,7 +5,7 @@ Paper at: https://arxiv.org/pdf/1610.02391
 ![alt_text](https://upload-images.jianshu.io/upload_images/415974-0147c44dcfb8cc1c.jpg)
 
 
-The input needed the pretrained network in question, one of its CNN layers, and at least one image to be used for inference. It is prefered to pass the last layer since it contains highest level of information.
+The input needed is the pre-trained network in question, one of its CNN layers, and at least one image to be used for inference. It is preferred to pass the last layer since it contains highest level of information.
 The output is a superposition of the image and a heatmap indicating where the CNN layer is looking.
 
 
@@ -21,16 +21,15 @@ Example to run:
 6. **show**: add --show in command to show plots of GradCam. By default, plots will not be shown.
 6. **labels_path**: path to .txt file containing a dictionary of your labels in the following format:
 
-
-{0: 'cat',                        
- 1: 'dog',                        
- 2: 'person'}
+    {0: 'cat',                        
+     1: 'dog',                        
+     2: 'person'}
  
  --labels_path not needed if --imageNet_labels flag is used.
  
  <ins>Example of figures obtained:</ins>
 
- We show the top three predictions and the worst prediction.
+ We always show the top three predictions and the worst prediction.
  
  ![alt_text](results/image6.jpg)
  ![alt_text](results/image19.jpg)
