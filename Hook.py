@@ -1,12 +1,12 @@
 import torch
 import torch.nn as nn
 
-class Hook():
-    def __init__(self, model):
+class Hook:
+    def __init__(self, model, conv2d_backcount=1):
         self.model = model
         self.conv2d_layers = []
         self.get_conv2d(self.model)
-        self.hook_layer(self.conv2d_layers[-1])
+        self.hook_layer(self.conv2d_layers[-conv2d_backcount])
 
     def get_conv2d(self, model):
         # saving all conv2d layers in self.conv2d_layers

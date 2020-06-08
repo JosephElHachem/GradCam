@@ -7,14 +7,14 @@ from utils import *
 
 
 class GradCam:
-    def __init__(self, model, data_path, idx2label_path, save_dir=None, show=True):
+    def __init__(self, model, data_path, idx2label_path, conv2d_backcount=1,save_dir=None, show=True):
         if save_dir is None and show is not True:
             raise ValueError("Can't have show=False and save_dir=None")
         self.model = model
         self.dataset = preprocess_image(data_path)
         self.save_dir = save_dir
         self.show = show
-        self.hook = Hook(self.model)
+        self.hook = Hook(self.model, conv2d_backcount)
         self.n_classes = self.get_n_classes() # to fix, ret
         # rieve from model design
         with open(idx2label_path) as f:
