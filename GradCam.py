@@ -42,7 +42,7 @@ class GradCam:
         attentions = {i.item():[] for i in idx_images}
 
         for index in idx_images:
-            image, label = self.dataset[index]
+            image, _ = self.dataset[index]
             image = image.view(1, 3, 224, 224)
             output = self.model(image)
             indices = torch.cat((torch.topk(output, 3)[1], torch.topk(-output, 1)[1]), 1)[0]
@@ -81,10 +81,8 @@ class GradCam:
 
                 image_heated = heat_image(denormalize(image_copy), heat_map)
                 del image_copy
-                attentions[index] += [(image_heated, prediction, index)]
-            print(f'heatmaps for image {index} ready.')
+                attentions[index] += [(image_heated, prediction)]
         end = time.time()
-        print(f"total inference time: {np.round(end-start,2)} seconds")
         self.attentions = attentions
 
     def plot_grad_cam(self):
@@ -95,27 +93,25 @@ class GradCam:
         for idx in self.attentions:
             fig, (ax1, ax2, ax3, ax4) = plt.subplots(1, 4, figsize=(15,5))
 
-            plt.title(self.attentions[idx][0][2])
-
-            image, label, _ = self.attentions[idx][0]
+            image, label = self.attentions[idx][0]
             label = label.item()
             label = self.idx2label[label].split(',')[0]
             ax1.imshow(image)
             ax1.set_title(f"{label}")
 
-            image, label, _ = self.attentions[idx][1]
+            image, label = self.attentions[idx][1]
             label = label.item()
             label = self.idx2label[label].split(',')[0]
             ax2.imshow(image)
             ax2.set_title(f"{label}")
 
-            image, label, _ = self.attentions[idx][2]
+            image, label = self.attentions[idx][2]
             label = label.item()
             label = self.idx2label[label].split(',')[0]
             ax3.imshow(image)
             ax3.set_title(f"{label}")
 
-            image, label, _ = self.attentions[idx][3]
+            image, label = self.attentions[idx][3]
             label = label.item()
             label = self.idx2label[label].split(',')[0]
             ax4.imshow(image)
@@ -124,7 +120,7 @@ class GradCam:
             if self.save_dir is not None:
                 if not os.path.isdir(self.save_dir):
                     os.mkdir(self.save_dir)
-                image_loc = self.save_dir+'/image'+str(self.attentions[idx][0][2])+'.jpg'
+                image_loc = self.save_dir+'/image'+str(idx)+'.jpg'
                 plt.savefig(image_loc)
             if self.show:
                 plt.show()

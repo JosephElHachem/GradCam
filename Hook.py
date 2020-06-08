@@ -1,6 +1,6 @@
 import torch
 
-class Hook():
+class Hook:
     def __init__(self, layer):
         self.layer=layer
         self.layer.register_forward_hook(self.forward_fn)
