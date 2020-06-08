@@ -5,7 +5,7 @@ Paper at: https://arxiv.org/pdf/1610.02391
 ![alt_text](https://upload-images.jianshu.io/upload_images/415974-0147c44dcfb8cc1c.jpg)
 
 
-The input needed is the pre-trained network in question, and at least one image to be used for inference. The last layer since it contains highest level of information.
+The input needed is the pre-trained network in question, and at least one image to be used for inference. The last layer is visualized since it contains highest level of information.
 The output is a superposition of the image and a heatmap indicating where the CNN layer is looking.
 
 
