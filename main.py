@@ -34,7 +34,6 @@ if __name__ == '__main__':
         idx2label_path = args.labels_path
 
     model = torch.load(args.model_path)
-    layer = model.features[28]
-    grad_cam = GradCam(model, layer, args.images_path, idx2label_path, save_dir=args.save_dir, show=args.show)
+    grad_cam = GradCam(model, args.images_path, idx2label_path, save_dir=args.save_dir, show=args.show)
     grad_cam.lunch_grad_cam(n_images=args.n_images)
     grad_cam.plot_grad_cam()

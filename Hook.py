@@ -1,7 +1,24 @@
 import torch
+import torch.nn as nn
 
-class Hook:
-    def __init__(self, layer):
+class Hook():
+    def __init__(self, model):
+        self.model = model
+        self.conv2d_layers = []
+        self.get_conv2d(self.model)
+        self.hook_layer(self.conv2d_layers[-1])
+
+    def get_conv2d(self, model):
+        # saving all conv2d layers in self.conv2d_layers
+        for layer in model.children():
+            if isinstance(layer, nn.Sequential):
+                self.get_conv2d(layer)
+            else:
+                if isinstance(layer, nn.Conv2d):
+                    self.conv2d_layers.append(layer)
+
+    def hook_layer(self, layer):
+        # hooking layer
         self.layer=layer
         self.layer.register_forward_hook(self.forward_fn)
         self.layer.register_backward_hook(self.backward_fn)

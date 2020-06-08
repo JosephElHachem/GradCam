@@ -2,7 +2,6 @@ from torchvision import models
 from GradCam import GradCam
 import urllib3
 import shutil
-import torch
 
 # First we download the ImageNet Labels, used for better analysis of the results
 http = urllib3.PoolManager()
@@ -17,6 +16,6 @@ data_path = "data"
 model = models.vgg16(pretrained=True)
 layer = model.features[28]
 grad_cam = GradCam(model, layer, data_path, idx2label_path)
-grad_cam.lunch_grad_cam(n_images=3)
+grad_cam.lunch_grad_cam(n_images=5)
 grad_cam.plot_grad_cam()
 
