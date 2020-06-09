@@ -6,7 +6,10 @@ class Hook:
         self.model = model
         self.conv2d_layers = []
         self.get_conv2d(self.model)
-        self.hook_layer(self.conv2d_layers[-conv2d_backcount])
+        if conv2d_backcount<len(self.conv2d_layers):
+            self.hook_layer(self.conv2d_layers[-conv2d_backcount])
+        else:
+            raise ValueError(f'There are only {len(self.conv2d_layers)} 2D CNN layers, let 1 <= conv2d_backcount <= {len(self.conv2d_layers)}')
 
     def get_conv2d(self, model):
         # saving all conv2d layers in self.conv2d_layers

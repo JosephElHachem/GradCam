@@ -1,13 +1,7 @@
-numpy
-matplotlib
+numpy~=1.18.4
+matplotlib~=3.2.1
 opencv
-torchvision
+torchvision~=0.4.2
 pytorch
 pillow
-
-
-
-
-
-
-
+urllib3~=1.25.9
