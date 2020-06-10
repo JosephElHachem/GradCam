@@ -8,13 +8,17 @@ Paper at: https://arxiv.org/pdf/1610.02391
 The input needed is the pre-trained network in question, and at least one image to be used for inference. The last layer is visualized since it contains highest level of information.
 The output is a superposition of the image and a heatmap indicating where the CNN layer is looking.
 
+There are two main ways to use this git, either apply GradCam on one a single layer on multiple images,
+or apply GradCam on a single image for multiple layers. 
 
-Example to run:
-
+<ins>Command for a single layer on multiple images</ins>
 `python main.py --model_path vgg16 --conv2d_backcount 1 --images_path data --labels_path imagenet1000_labels.txt --n_images 3 --show`
 
-1. **model_path**: path to torch saved model (using torch.save()).
-2. **conv2d_backcount**: positive integer; CNN layer to visualize, counting from behind. By default equal to 1.
+<ins>Command for multiple layers on a single image</ins>
+`python main.py --model_path vgg16 --conv2d_backcount 1 3 4 --images_path data --labels_path imagenet1000_labels.txt --show`
+
+1. **model_path**: path to torch saved model (using torch.save())
+2. **conv2d_backcount**: positive integer or a list of positive integers; CNN layer to visualize, counting from behind. By default equal to 1.
 3. **images_path**: path pointing to the root of the images folder (not to the directory containing the images, but one level before).
 4. **save_dir**: directory to save images on which gradcam was applied.
 5. **n_images**: number of images used for inference.
@@ -28,11 +32,20 @@ Example to run:
  
  --labels_path not needed if --imageNet_labels flag is used.
  
- <ins>Example of figures obtained:</ins>
-
- We always show the top three predictions and the worst prediction.
+ **All images are saved in --save_dir directory**
  
- ![alt_text](results/image6.jpg)
- ![alt_text](results/image19.jpg)
- ![alt_text](results/image14.jpg)
+<ins>Example of figures for a single layer with multiple images:</ins>
+We always show the top three predictions and the worst prediction.
+![alt_text](results/image6.jpg)
+![alt_text](results/image19.jpg)
+![alt_text](results/image14.jpg)
+ 
+<ins>Example of figures for a single layer with multiple images:</ins>
+We always show the top three predictions and the worst prediction.
+![alt_text](multiple_layers/layer1.jpg)
+![alt_text](multiple_layers/layer2.jpg)
+![alt_text](multiple_layers/layer3.jpg)
 
+**About preprocessing**
+We used the default preprocessing from ImageNet, and it is defined in utils.py
+If another preprocessing is needed, the function should be replaced inside utils.py
