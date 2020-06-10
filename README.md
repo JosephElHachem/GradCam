@@ -37,12 +37,14 @@ or apply GradCam on a single image for multiple layers.
  **All images are saved in --save_dir directory**
  
 <ins>Example of figures for a single layer with multiple images:</ins>
+
 We always show the top three predictions and the worst prediction.
 ![alt_text](multiple_images/image0.jpg)
 ![alt_text](multiple_images/image4.jpg)
 ![alt_text](multiple_images/image7.jpg)
  
 <ins>Example of figures for a single layer with multiple images:</ins>
+
 We always show the top three predictions and the worst prediction.
 ![alt_text](multiple_layers/layer3.jpg)
 ![alt_text](multiple_layers/layer2.jpg)
