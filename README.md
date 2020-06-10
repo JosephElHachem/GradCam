@@ -44,9 +44,9 @@ We always show the top three predictions and the worst prediction.
  
 <ins>Example of figures for a single layer with multiple images:</ins>
 We always show the top three predictions and the worst prediction.
-![alt_text](multiple_layers/layer1.jpg)
-![alt_text](multiple_layers/layer2.jpg)
 ![alt_text](multiple_layers/layer3.jpg)
+![alt_text](multiple_layers/layer2.jpg)
+![alt_text](multiple_layers/layer1.jpg)
 
 <ins>About preprocessing</ins>
 
