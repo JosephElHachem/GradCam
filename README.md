@@ -12,9 +12,11 @@ There are two main ways to use this git, either apply GradCam on one a single la
 or apply GradCam on a single image for multiple layers. 
 
 <ins>Command for a single layer on multiple images</ins>
+
 `python main.py --model_path vgg16 --conv2d_backcount 1 --images_path data --labels_path imagenet1000_labels.txt --n_images 3 --show`
 
 <ins>Command for multiple layers on a single image</ins>
+
 `python main.py --model_path vgg16 --conv2d_backcount 1 3 4 --images_path data --labels_path imagenet1000_labels.txt --show`
 
 1. **model_path**: path to torch saved model (using torch.save())
@@ -46,6 +48,7 @@ We always show the top three predictions and the worst prediction.
 ![alt_text](multiple_layers/layer2.jpg)
 ![alt_text](multiple_layers/layer3.jpg)
 
-**About preprocessing**
+<ins>About preprocessing</ins>
+
 We used the default preprocessing from ImageNet, and it is defined in utils.py
 If another preprocessing is needed, the function should be replaced inside utils.py
