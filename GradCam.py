@@ -75,10 +75,13 @@ class GradCam:
             # np relu
             heat_map = np.maximum(heat_map, 0)
 
+            # upsampling scale factor
+            scale_factor = image.shape[-2] / layer_shape[0]
+
             # upsampling
             heat_map = torch.from_numpy(heat_map).unsqueeze(0)
             heat_map.unsqueeze_(0)
-            heat_map = F.interpolate(heat_map, scale_factor=16, mode='bilinear', align_corners=False) # SCALE FACTOR
+            heat_map = F.interpolate(heat_map, scale_factor=scale_factor, mode='bilinear', align_corners=False) # SCALE FACTOR
 
             # normalizing
             heat_map.squeeze_()

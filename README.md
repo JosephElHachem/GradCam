@@ -11,10 +11,10 @@ The output is a superposition of the image and a heatmap indicating where the CN
 
 Example to run:
 
-`python main.py --model_path vgg16 --images_path data --labels_path imagenet1000_labels.txt --n_images 3 --show`
+`python main.py --model_path vgg16 --conv2d_backcount 1 --images_path data --labels_path imagenet1000_labels.txt --n_images 3 --show`
 
 1. **model_path**: path to torch saved model (using torch.save()).
-2. **conv2d_backcount**: CNN layer to visualize, counting from behind. By default equal to 1.
+2. **conv2d_backcount**: positive integer; CNN layer to visualize, counting from behind. By default equal to 1.
 3. **images_path**: path pointing to the root of the images folder (not to the directory containing the images, but one level before).
 4. **save_dir**: directory to save images on which gradcam was applied.
 5. **n_images**: number of images used for inference.
